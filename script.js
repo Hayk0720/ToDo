@@ -21,7 +21,7 @@ btnSubmit.addEventListener('click',()=>{
 	`
 	<div class = "node"><input type = "checkbox" class = "check${randNum}"/>
 	<div class = "nodeText">${todoListObj.name}</div> </div>
-	<div>
+	<div class = "removeBtn">
 	<button class = "removeTodoBtn${randNum}">X</button>
 	</div>`
 	todoLi.innerHTML=todoItem;
@@ -35,7 +35,8 @@ checkDone.addEventListener('change',function(e){
 
 	if(e.target.checked){
 		console.log('TRUE');
-		checkDone.closest("li").style.textDecoration = "line-through"
+		checkDone.closest(".node").style.textDecoration = "line-through"
+		
 
 	}else{
 		console.log('false')
