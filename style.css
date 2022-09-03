@@ -76,6 +76,10 @@ body {
 	background-color: black;
 	color: white;
 }
+.input-text:focus{
+	outline:none;
+	padding: 0px 0px 0px 15px;
+}
 .input-submit {
 height: 30px;
 margin-left: -40px;
