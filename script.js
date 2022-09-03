@@ -1,43 +1,58 @@
 const btnSubmit = document.getElementById('input-submit');
 const listContainer = document.getElementById('list__container')
+const ulList = document.querySelector('.ul-list');
 const listDiv = document.getElementById('list');
-let checkDone = document.createElement("input");
 
 const inputText = document.getElementById('input-text');
-let node;
+let TodoList = [];
 
 
-btnSubmit.addEventListener('click',() =>{
-	if(inputText.value){
-	const nodeDiv=document.createElement("div");
-	nodeDiv.id="nodeDiv";
-	nodeDiv.classList.add("nodeDiv");
+btnSubmit.addEventListener('click',()=>{
+	const todoListObj={};
 
-	node=document.createElement("li");
-	node.id ="nodeLi";
+	const todoLi = document.createElement("li");
+	todoLi.classList.add("todoLi")
+	todoListObj.name = inputText.value;
+	todoListObj.checked = false;
+	let date = new Date
+	let randNum = date.valueOf()
+	console.log(randNum)
+	const todoItem = 
+	`
+	<div class = "node"><input type = "checkbox" class = "check${randNum}"/>
+	<div class = "nodeText">${todoListObj.name}</div> </div>
+	<div>
+	<button class = "removeTodoBtn${randNum}">X</button>
+	</div>`
+	todoLi.innerHTML=todoItem;
+	ulList.appendChild(todoLi);
+	inputText.value = "";
 
-	const textNode = document.createTextNode(`${inputText.value}`);
-	node.appendChild(textNode);
+let checkDone = document.querySelector(`.check${randNum}`);
+let removeTodoBtn = document.querySelector(`.removeTodoBtn${randNum}`)
 
-	checkDone = document.createElement("input");
-	checkDone.setAttribute("type","checkbox");
-	checkDone.id = "checkDone";
-	
-	checkDone.addEventListener('change',function(e){
-		if(e.target='checked'){
-			node.style.textDecoration = "line-through";
+checkDone.addEventListener('change',function(e){
 
-		}
-	});
-	
-	list.appendChild(nodeDiv);
-	nodeDiv.appendChild(node);
-	nodeDiv.appendChild(checkDone);
-	inputText.value="";
+	if(e.target.checked){
+		console.log('TRUE');
+		checkDone.closest("li").style.textDecoration = "line-through"
+
+	}else{
+		console.log('false')
+		checkDone.closest("li").style.textDecoration = "none"
 	}
-})
+	
+	
+});
 
+removeTodoBtn.addEventListener('click', function(e){
+	const curBtn = e.currentTarget;
+	console.log('TRUE');
+	curBtn.closest("li").remove()
 
+});
+
+});
 
 
 
