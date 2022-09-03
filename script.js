@@ -40,7 +40,7 @@ checkDone.addEventListener('change',function(e){
 
 	}else{
 		console.log('false')
-		checkDone.closest("li").style.textDecoration = "none"
+		checkDone.closest(".node").style.textDecoration = "none"
 	}
 	
 	
